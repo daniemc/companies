@@ -8,9 +8,9 @@
     </router-link>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition">
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-3">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item" v-for="(item, m) in menu" :key="m">
             <router-link class="nav-link" :to="item.url">

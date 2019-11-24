@@ -41652,40 +41652,47 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "sidebar" }, [
-        _c("nav", { staticClass: "mt-2" }, [
-          _c(
-            "ul",
-            {
-              staticClass: "nav nav-pills nav-sidebar flex-column",
-              attrs: {
-                "data-widget": "treeview",
-                role: "menu",
-                "data-accordion": "false"
-              }
-            },
-            _vm._l(_vm.menu, function(item, m) {
-              return _c(
-                "li",
-                { key: m, staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link", attrs: { to: item.url } },
-                    [
-                      _c("i", { class: "nav-icon " + item.icon }),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(item.text))])
-                    ]
-                  )
-                ],
-                1
-              )
-            }),
-            0
-          )
-        ])
-      ])
+      _c(
+        "div",
+        {
+          staticClass:
+            "sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition"
+        },
+        [
+          _c("nav", { staticClass: "mt-3" }, [
+            _c(
+              "ul",
+              {
+                staticClass: "nav nav-pills nav-sidebar flex-column",
+                attrs: {
+                  "data-widget": "treeview",
+                  role: "menu",
+                  "data-accordion": "false"
+                }
+              },
+              _vm._l(_vm.menu, function(item, m) {
+                return _c(
+                  "li",
+                  { key: m, staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: item.url } },
+                      [
+                        _c("i", { class: "nav-icon " + item.icon }),
+                        _vm._v(" "),
+                        _c("p", [_vm._v(_vm._s(item.text))])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              }),
+              0
+            )
+          ])
+        ]
+      )
     ],
     1
   )
