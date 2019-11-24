@@ -1,9 +1,27 @@
 {
     "lang": "es",
+    "commons": {
+        "close": "Cerrar",
+        "save": "Guardar",
+        "update": "Actualizar",
+        "cancel": "Cancelar"
+    },
     "login-view": {
         "title": "Ingresa tus datos para iniciar sesión",
         "email": "Correo electrónico",
         "password": "Contraseña",
         "login": "Iniciar sesión"
+    },
+    "companies-view": {
+        "company-fields": {
+            "name": "Nombre",
+            "email": "Correo electrónico",
+            "logo": "Logo",
+            "website": "Sitio Web",
+            "actions": "Acciones"
+        },
+        "btn-new": "Nuevo",
+        "new-company": "Nueva compañía",
+        "update-company": "Actualizar compañía"
     }
 }

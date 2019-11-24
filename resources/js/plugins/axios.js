@@ -20,10 +20,9 @@ axios.interceptors.response.use(response => {
   }
 
   if (status === 401 && store.getters.authCheck) {
+    store.dispatch('logout')
+    router.push({ name: 'login' })
     alert('Sesion expirada')
-    .then(async () => {
-      router.push({ name: 'login' })
-    })
   }
 
   return Promise.reject(error)

@@ -6,3 +6,6 @@ export const SET_LAYOUT = 'SET_LAYOUT'
 export const LOGOUT = 'LOGOUT'
 export const SET_TOKEN = 'SET_TOKEN'
 export const SET_USER = 'SET_USER'
+
+//company.js
+export const SET_COMPANIES = 'SET_COMPANIES'

@@ -22,4 +22,8 @@ Route::group(['middleware' => 'auth:api'], function () {
         return $request->user();
     });
     Route::post('logout', 'Auth\LoginController@logout');
+
+    Route::apiResources([
+        'company' => 'API\CompanyController',
+    ]);
 });
