@@ -10,7 +10,7 @@ export const routes = [
         path: '/home',
         name: 'home',
         component: require('./../components/home.vue').default,
-        layout: 'defaultLayout',
+        layout: 'appLayout',
         isPublic: false,
     },
     {
