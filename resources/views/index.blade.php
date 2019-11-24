@@ -14,7 +14,8 @@
 @php
 $config = [
     'appUrl' => config('app.url'),
-    'companyImg' => asset('img/company.png')
+    'companyImg' => asset('img/company.png'),
+    'userImg' => asset('img/user.png')
 ];
 @endphp
 <script>window.config = {!! json_encode($config); !!};</script>

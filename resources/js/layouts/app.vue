@@ -1,12 +1,6 @@
 <template>
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-        </nav>
+        <nav-bar></nav-bar>
         <side-bar-menu></side-bar-menu>
         <div class="content-wrapper">
             <div class="content">
@@ -19,11 +13,13 @@
 </template>
 
 <script>
-    import  SideBarMenu from './../components/commons/SideBarMenu'
+    import SideBarMenu from './../components/commons/SideBarMenu'
+    import NavBar from './../components/commons/NavBar'
     export default {
         name: 'app-layout',
         components: {
             'side-bar-menu': SideBarMenu,
+            'nav-bar': NavBar
         },
     }
 </script>
