@@ -6,20 +6,33 @@
                 <p class="login-box-msg">{{ $t('login-view.title') }}</p>
                 <form>
                     <div class="input-group mb-3">
-                    <input type="email" class="form-control" :placeholder="$t('login-view.email')" v-model="form.email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <input
+                            type="email"
+                            class="form-control"
+                            :class="{ 'is-invalid': form.errors.has('email') }"
+                            :placeholder="$t('login-view.email')"
+                            v-model="form.email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
                         </div>
-                    </div>
+                        <has-error :form="form" field="email"></has-error>
                     </div>
                     <div class="input-group mb-3">
-                    <input type="password" class="form-control" :placeholder="$t('login-view.password')" v-model="form.password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+                        <input
+                            type="password"
+                            class="form-control"
+                            :class="{ 'is-invalid': form.errors.has('password') }"
+                            :placeholder="$t('login-view.password')"
+                            v-model="form.password"
+                            >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
-                    </div>
+                        <has-error :form="form" field="password"></has-error>
                     </div>
                     <div class="row">
                     <div class="col-6">
@@ -54,16 +67,16 @@
         name: 'login-view',
         data() {
             return {
-                form: {
+                form: new Form({
                     email: '',
                     password: ''
-                }
+                })
             }
         },
         methods: {
             async login() {
                 try {
-                    const { data, status } = await axios.post('/login', this.form)
+                    const { data, status } = await this.form.post('/login', this.form)
                     if (status === 200) {
                         this.$store.dispatch('saveToken', data.token)
                         await this.$store.dispatch('fetchUser')
