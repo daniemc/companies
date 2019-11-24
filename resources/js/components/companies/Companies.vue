@@ -7,9 +7,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-title">
-                                <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#modal-companies-form">
-                                    {{ $t('companies-view.btn-new') }}
-                                </button>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 text-right">
+                                        <button type="button" class="btn btn-success btn-md mt-3 mr-4" data-toggle="modal" data-target="#modal-companies-form">
+                                            <i class="fas fa-plus"></i>
+                                            {{ $t('companies-view.btn-new') }}
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="card-body">
                                 <table class="table table-bordered table-hover table-condensed">

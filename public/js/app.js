@@ -2336,6 +2336,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42351,24 +42359,35 @@ var render = function() {
             _c("div", { staticClass: "col-12" }, [
               _c("div", { staticClass: "card" }, [
                 _c("div", { staticClass: "card-title" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success btn-md",
-                      attrs: {
-                        type: "button",
-                        "data-toggle": "modal",
-                        "data-target": "#modal-companies-form"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.$t("companies-view.btn-new")) +
-                          "\n                            "
-                      )
-                    ]
-                  )
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-sm-12 col-md-6" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-sm-12 col-md-6 text-right" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success btn-md mt-3 mr-4",
+                            attrs: {
+                              type: "button",
+                              "data-toggle": "modal",
+                              "data-target": "#modal-companies-form"
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fas fa-plus" }),
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.$t("companies-view.btn-new")) +
+                                "\n                                    "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
