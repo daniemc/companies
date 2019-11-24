@@ -22,6 +22,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         name: 'nav-bar',
         data() {
@@ -35,7 +36,8 @@
             }
         },
         methods: {
-            logout() {
+            async logout() {
+                await axios.post('/logout')
                 this.$store.dispatch('logout')
                 this.$router.push({ name: 'login' })
             }

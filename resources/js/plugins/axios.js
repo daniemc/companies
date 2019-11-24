@@ -1,9 +1,9 @@
 import axios from 'axios'
-import store from '~/store'
-import router from '~/router'
+import store from '../store'
+import router from '../router'
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.baseURL = '/'
+axios.defaults.baseURL = '/api'
 axios.interceptors.request.use(request => {
   if (store.getters.authToken) {
     request.headers.common['Authorization'] = `Bearer ${store.getters.authToken}`

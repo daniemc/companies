@@ -17,7 +17,7 @@ export const actions = {
         commit(types.SET_TOKEN, token)
     },
     fetchUser({ commit }) {
-        return axios.get('/api/user')
+        return axios.get('/user')
             .then(resp => {
                 if (resp.status === 200) {
                     const user = resp.data
@@ -32,6 +32,8 @@ export const actions = {
 export const mutations = {
     [types.LOGOUT] (state) {
         state.user = null
+        state.token = null
+        Cookies.remove('token')
     },
     [types.SET_TOKEN] (state, token) {
         state.token = token

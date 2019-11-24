@@ -64,8 +64,9 @@
         methods: {
             async login() {
                 try {
-                    const { data, status } = await axios.post('/api/login', this.form)
+                    const { data, status } = await axios.post('/login', this.form)
                     if (status === 200) {
+                        this.$store.dispatch('saveToken', data.token)
                         await this.$store.dispatch('fetchUser')
                         this.$router.push({ name: 'home' })
                     }
