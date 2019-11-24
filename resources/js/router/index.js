@@ -20,14 +20,16 @@ function userIsAuth() {
 }
 
 const router = new Router({
-    base: 'companies',
+    base: '/',
     mode: 'history',
     routes: routes.map(route => ({
         name: route.name,
         path: route.path,
         component: route.component,
         beforeEnter: (to, from, next) => {
+            console.log('here out', to.name, userIsAuth(), store.getters)
             if (to.name === 'login' && userIsAuth()) {
+                console.log('here in ')
                 return next({ path: '/home' })
             }
             store.dispatch('setLayout', route.layout)

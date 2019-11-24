@@ -12,6 +12,19 @@ export const state = {
 export const actions = {
     logout({ commit }) {
         commit(types.LOGOUT)
+    },
+    saveToken({ commit }, token) {
+        commit(types.SET_TOKEN, token)
+    },
+    fetchUser({ commit }) {
+        return axios.get('/api/user')
+            .then(resp => {
+                if (resp.status === 200) {
+                    const user = resp.data
+                    commit(types.SET_USER, user)
+                }
+            })
+            .catch(err => console.log(err))
     }
 }
 
@@ -19,10 +32,19 @@ export const actions = {
 export const mutations = {
     [types.LOGOUT] (state) {
         state.user = null
+    },
+    [types.SET_TOKEN] (state, token) {
+        state.token = token
+        Cookies.set('token', token, { expires: 365 })
+    },
+    [types.SET_USER] (state, user) {
+        state.user = user
     }
 }
 
 //getters
 export const getters = {
-    authCheck: state => state.user !== null
+    authCheck: state => state.user !== null,
+    authToken: state => state.token,
+    authUser: state => state.user
 }

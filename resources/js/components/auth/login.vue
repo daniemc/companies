@@ -7,7 +7,7 @@
 
                 <form action="../../index3.html" method="post">
                     <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" v-model="form.email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-envelope"></span>
@@ -15,7 +15,7 @@
                     </div>
                     </div>
                     <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" v-model="form.password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-lock"></span>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button @click.prevent="login" class="btn btn-primary btn-block">Sign In</button>
                     </div>
                     <!-- /.col -->
                     </div>
@@ -50,8 +50,31 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
-        name: 'login-view'
+        name: 'login-view',
+        data() {
+            return {
+                form: {
+                    email: '',
+                    password: ''
+                }
+            }
+        },
+        methods: {
+            async login() {
+                try {
+                    const { data, status } = await axios.post('/api/login', this.form)
+                    if (status === 200) {
+                        await this.$store.dispatch('fetchUser')
+                        this.$router.push({ name: 'home' })
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+
+            }
+        },
     }
 </script>
 

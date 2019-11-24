@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        Hey, logued in!!!
     </div>
 </template>
 
