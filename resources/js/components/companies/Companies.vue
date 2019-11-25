@@ -30,7 +30,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(company, c) in companies" :key="c" >
+                                        <tr v-for="(company, c) in companies.data" :key="c" >
                                             <td class="text-center">{{ company.name }}</td>
                                             <td class="text-center">{{ company.email }}</td>
                                             <td class="text-center">{{ company.logo }}</td>
@@ -46,6 +46,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="card-footer">
+                                <pagination :data="companies" @pagination-change-page="init"></pagination>
                             </div>
                         </div>
                     </div>
@@ -86,8 +89,8 @@
             companies: 'companies',
         }),
         methods: {
-            init() {
-                this.$store.dispatch('fetchCompanies')
+            init(page = 1) {
+                this.$store.dispatch('fetchCompanies', { page })
             },
             editCompany(id) {
                 this.inEdition = true
@@ -97,10 +100,10 @@
                 axios.delete(`/company/${id}`)
                     .then(({ status }) => {
                         if (status === 200) {
-                            this.$store.dispatch('fetchCompanies')
+                            this.$store.dispatch('fetchCompanies', 1)
                         }
                     })
-            }
+            },
         },
     }
 </script>

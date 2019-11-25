@@ -8,8 +8,8 @@ export const state = {
 
 //actions
 export const actions = {
-    fetchCompanies({ commit }) {
-        axios.get('/company')
+    fetchCompanies({ commit }, { page }) {
+        axios.get(`/company?page=${page}`)
             .then(({ data, status }) => {
                 if (status === 200) {
                     commit(types.SET_COMPANIES, data)
