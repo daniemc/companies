@@ -78,7 +78,7 @@ class CompanyController extends Controller
             'name' => 'required|string|max:191',
             'email' => 'nullable|email|max:191',
             'logo' => '',
-            'website' => 'nullable|string|max:191',
+            'website' => 'nullable|url|max:191',
         ]);
     }
 }
