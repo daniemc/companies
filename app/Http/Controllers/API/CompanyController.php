@@ -74,11 +74,10 @@ class CompanyController extends Controller
     protected function validateCompany(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'nullable|email',
+            'name' => 'required|string|max:191',
+            'email' => 'nullable|email|max:191',
             'logo' => '',
-            'website' => '',
-            'actions' => '',
+            'website' => 'nullable|string|max:191',
         ]);
     }
 }
