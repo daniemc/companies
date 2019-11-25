@@ -15,8 +15,10 @@
                         type="text"
                         class="form-control"
                         id="employeeName"
+                        :class="{ 'is-invalid': form.errors.has('first_name') }"
                         v-model="form.first_name"
                         :placeholder="$t('employees-view.employee-fields.first_name')">
+                        <has-error :form="form" field="first_name"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="employeeLastName">{{ $t('employees-view.employee-fields.last_name') }}</label>
@@ -24,8 +26,10 @@
                         type="text"
                         class="form-control"
                         id="employeeLastName"
+                        :class="{ 'is-invalid': form.errors.has('last_name') }"
                         v-model="form.last_name"
                         :placeholder="$t('employees-view.employee-fields.last_name')">
+                        <has-error :form="form" field="last_name"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="employeeEmail">{{ $t('employees-view.employee-fields.email') }}</label>
@@ -33,8 +37,10 @@
                         type="email"
                         class="form-control"
                         id="employeeEmail"
+                        :class="{ 'is-invalid': form.errors.has('email') }"
                         v-model="form.email"
                         :placeholder="$t('employees-view.employee-fields.email')">
+                        <has-error :form="form" field="email"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="employeePhone">{{ $t('employees-view.employee-fields.phone') }}</label>
@@ -42,20 +48,24 @@
                         type="text"
                         class="form-control"
                         id="employeePhone"
+                        :class="{ 'is-invalid': form.errors.has('phone') }"
                         v-model="form.phone"
                         :placeholder="$t('employees-view.employee-fields.phone')">
+                        <has-error :form="form" field="phone"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="employeeCompany">{{ $t('employees-view.employee-fields.company') }}</label>
                     <select
                         class="form-control"
                         id="employeeCompany"
+                        :class="{ 'is-invalid': form.errors.has('company_id') }"
                         v-model="form.company_id">
                         <option
                             v-for="(company, c) in companies"
                             :key="c"
                             :value="company.id">{{ company.name }}</option>
                     </select>
+                    <has-error :form="form" field="company_id"></has-error>
                 </div>
             </form>
         </div>

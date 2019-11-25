@@ -50,6 +50,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
+        $this->validateCompany($request);
         Company::where('id', $request->id)
             ->update($request->except('id'));
     }

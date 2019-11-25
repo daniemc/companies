@@ -2487,6 +2487,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'employees-form',
   props: {
@@ -42906,178 +42916,222 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "modal-body" }, [
       _c("form", [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "employeeName" } }, [
-            _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.first_name")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.first_name,
-                expression: "form.first_name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "employeeName",
-              placeholder: _vm.$t("employees-view.employee-fields.first_name")
-            },
-            domProps: { value: _vm.form.first_name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "first_name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "employeeLastName" } }, [
-            _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.last_name")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.last_name,
-                expression: "form.last_name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "employeeLastName",
-              placeholder: _vm.$t("employees-view.employee-fields.last_name")
-            },
-            domProps: { value: _vm.form.last_name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "last_name", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "employeeEmail" } }, [
-            _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.email")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.email,
-                expression: "form.email"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              id: "employeeEmail",
-              placeholder: _vm.$t("employees-view.employee-fields.email")
-            },
-            domProps: { value: _vm.form.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "email", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "employeePhone" } }, [
-            _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.phone")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.phone,
-                expression: "form.phone"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "employeePhone",
-              placeholder: _vm.$t("employees-view.employee-fields.phone")
-            },
-            domProps: { value: _vm.form.phone },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "phone", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "employeeCompany" } }, [
-            _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.company")))
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "employeeName" } }, [
+              _vm._v(
+                _vm._s(_vm.$t("employees-view.employee-fields.first_name"))
+              )
+            ]),
+            _vm._v(" "),
+            _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.form.company_id,
-                  expression: "form.company_id"
+                  value: _vm.form.first_name,
+                  expression: "form.first_name"
                 }
               ],
               staticClass: "form-control",
-              attrs: { id: "employeeCompany" },
+              class: { "is-invalid": _vm.form.errors.has("first_name") },
+              attrs: {
+                type: "text",
+                id: "employeeName",
+                placeholder: _vm.$t("employees-view.employee-fields.first_name")
+              },
+              domProps: { value: _vm.form.first_name },
               on: {
-                change: function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.form,
-                    "company_id",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "first_name", $event.target.value)
                 }
               }
-            },
-            _vm._l(_vm.companies, function(company, c) {
-              return _c("option", { key: c, domProps: { value: company.id } }, [
-                _vm._v(_vm._s(company.name))
-              ])
             }),
-            0
-          )
-        ])
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "first_name" } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "employeeLastName" } }, [
+              _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.last_name")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.last_name,
+                  expression: "form.last_name"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("last_name") },
+              attrs: {
+                type: "text",
+                id: "employeeLastName",
+                placeholder: _vm.$t("employees-view.employee-fields.last_name")
+              },
+              domProps: { value: _vm.form.last_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "last_name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "last_name" } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "employeeEmail" } }, [
+              _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.email")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("email") },
+              attrs: {
+                type: "email",
+                id: "employeeEmail",
+                placeholder: _vm.$t("employees-view.employee-fields.email")
+              },
+              domProps: { value: _vm.form.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "email" } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "employeePhone" } }, [
+              _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.phone")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.phone,
+                  expression: "form.phone"
+                }
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("phone") },
+              attrs: {
+                type: "text",
+                id: "employeePhone",
+                placeholder: _vm.$t("employees-view.employee-fields.phone")
+              },
+              domProps: { value: _vm.form.phone },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "phone", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "phone" } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "employeeCompany" } }, [
+              _vm._v(_vm._s(_vm.$t("employees-view.employee-fields.company")))
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.company_id,
+                    expression: "form.company_id"
+                  }
+                ],
+                staticClass: "form-control",
+                class: { "is-invalid": _vm.form.errors.has("company_id") },
+                attrs: { id: "employeeCompany" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "company_id",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              _vm._l(_vm.companies, function(company, c) {
+                return _c(
+                  "option",
+                  { key: c, domProps: { value: company.id } },
+                  [_vm._v(_vm._s(company.name))]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "company_id" } })
+          ],
+          1
+        )
       ])
     ]),
     _vm._v(" "),

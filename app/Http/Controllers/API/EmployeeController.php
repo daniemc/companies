@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreEmployee;
 
 class EmployeeController extends Controller
 {
@@ -24,7 +25,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployee $request)
     {
         Employee::create($request->all());
     }
@@ -47,7 +48,7 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(StoreEmployee $request, Employee $employee)
     {
         Employee::where('id', $employee->id)
             ->update($request->except('id'));
