@@ -2240,7 +2240,7 @@ __webpack_require__.r(__webpack_exports__);
       }, null, this);
     },
     updateCompany: function updateCompany() {
-      var _ref2, status;
+      var _ref2, status, _ref3, statusLogo;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function updateCompany$(_context2) {
         while (1) {
@@ -2253,13 +2253,33 @@ __webpack_require__.r(__webpack_exports__);
               _ref2 = _context2.sent;
               status = _ref2.status;
 
-              if (status === 200) {
-                this.$store.dispatch('fetchCompanies', {
-                  page: 1
-                });
+              if (!(status === 200)) {
+                _context2.next = 11;
+                break;
               }
 
-            case 5:
+              if (!this.form.logo) {
+                _context2.next = 10;
+                break;
+              }
+
+              _context2.next = 8;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(this.form.post('/company/update/logo', {
+                transformRequest: [function (data, headers) {
+                  return Object(object_to_formdata__WEBPACK_IMPORTED_MODULE_1__["default"])(data);
+                }]
+              }));
+
+            case 8:
+              _ref3 = _context2.sent;
+              statusLogo = _ref3.statusLogo;
+
+            case 10:
+              this.$store.dispatch('fetchCompanies', {
+                page: 1
+              });
+
+            case 11:
             case "end":
               return _context2.stop();
           }

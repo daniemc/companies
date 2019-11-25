@@ -28,5 +28,6 @@ Route::group(['middleware' => 'auth:api'], function () {
         'employee' => 'API\EmployeeController'
     ]);
 
+    Route::post('company/update/logo', 'API\CompanyController@updateLogo');
     Route::get('companies', 'API\CompanyController@allCompanies');
 });

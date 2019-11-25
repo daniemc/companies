@@ -110,6 +110,13 @@
             async updateCompany() {
                 const { status } = await this.form.put(`/company/${this.form.id}`)
                 if (status === 200) {
+                    if (this.form.logo) {
+                        const { statusLogo } = await this.form.post('/company/update/logo', {
+                            transformRequest: [function(data, headers) {
+                                return objectToFormData(data)
+                            }]
+                        })
+                    }
                     this.$store.dispatch('fetchCompanies', { page: 1})
                 }
             },

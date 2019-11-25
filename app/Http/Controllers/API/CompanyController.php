@@ -88,6 +88,13 @@ class CompanyController extends Controller
         return Company::all();
     }
 
+    public function updateLogo(Request $request)
+    {
+        $file_path = $this->storeFile($request->file('logo'));
+        Company::where('id', $request->id)
+            ->update(['logo' => $file_path]);
+    }
+
     /**
      * Validate company model after create or update
      *
