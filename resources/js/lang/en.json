@@ -1,3 +1,71 @@
 {
-    "lang": "en"
+    "lang": "en",
+    "commons": {
+        "close": "Close",
+        "save": "Save",
+        "update": "Update",
+        "cancel": "Cancel",
+        "en": "EN",
+        "es": "ES",
+        "signout": "Signout"
+    },
+    "login-view": {
+        "title": "Sign in to start your session",
+        "email": "Email",
+        "password": "Password",
+        "login": "Sign in"
+    },
+    "home-view": {
+        "name": "Home"
+    },
+    "companies-view": {
+        "name": "Companies",
+        "company-fields": {
+            "name": "Name",
+            "email": "Email",
+            "logo": "Logo",
+            "website": "Website",
+            "actions": "Actions"
+        },
+        "btn-new": "New",
+        "new-company": "New company",
+        "update-company": "Update company",
+        "messages": {
+            "saved": "Company saved correctly",
+            "updated": "Company updated correctly",
+            "deleted": "Company deleted correctly"
+        }
+    },
+    "employees-view": {
+        "name": "Employees",
+        "employee-fields": {
+            "first_name": "Names",
+            "last_name": "Last name",
+            "email": "Email",
+            "phone": "Phone",
+            "company": "Company",
+            "actions": "Actions"
+        },
+        "btn-new": "New",
+        "new-employee": "New Employee",
+        "update-employee": "Update employee",
+        "messages": {
+            "saved": "Employee saved correctly",
+            "updated": "Employee updated correctly",
+            "deleted": "Employee deleted correctly"
+        }
+    },
+    "404-view": {
+        "title": "Oops! Page not found.",
+        "text": "We could not find the page you were looking for. Meanwhile, you may ",
+        "btn_text": "return to home"
+    },
+    "messages": {
+        "success": "Success!",
+        "warning": "warning!",
+        "error": "Error!",
+        "info": "Info",
+        "expired_sesion_text": "Session expired.",
+        "app_error": "Something went wrong."
+    }
 }

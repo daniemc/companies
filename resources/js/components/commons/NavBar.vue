@@ -6,6 +6,20 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="fas fa-language big-icon"></i>
+                    <span class="normal-font">{{ lang }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-0">
+                    <a href="#" @click="switLang('en')" class="dropdown-item" :class="{ 'active': lang === 'EN' }">
+                        <i class="flag-icon flag-icon-us mr-2"></i> {{ $t('commons.en') }}
+                    </a>
+                    <a href="#" @click="switLang('es')" class="dropdown-item" :class="{ 'active': lang === 'ES' }">
+                        <i class="flag-icon flag-icon-es mr-2"></i> {{ $t('commons.es') }}
+                    </a>
+                </div>
+            </li>
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <img :src="userImg" class="user-image img-circle elevation-2" alt="User Image">
@@ -33,6 +47,9 @@
         computed: {
             user() {
                 return this.$store.getters.authUser
+            },
+            lang() {
+                return this.$store.getters.lang.toUpperCase()
             }
         },
         methods: {
@@ -40,11 +57,21 @@
                 await axios.post('/logout')
                 this.$store.dispatch('logout')
                 this.$router.push({ name: 'login' })
+            },
+            switLang(lang) {
+                this.$store.dispatch('updateUserLang', lang)
+                this.$store.commit('SET_LANG', lang)
             }
         },
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+    .big-icon {
+        font-size: 35px;
+        margin-top: -7px;
+    }
+    .normal-font {
+        font-size: 20px !important;
+    }
 </style>

@@ -22,6 +22,7 @@ export const actions = {
                 if (resp.status === 200) {
                     const user = resp.data
                     commit(types.SET_USER, user)
+                    commit(types.SET_LANG, user.locale)
                 }
             })
             .catch(err => console.log(err))

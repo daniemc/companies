@@ -1,6 +1,6 @@
 //commons.js
 export const SET_LAYOUT = 'SET_LAYOUT'
-
+export const SET_LANG = 'SET_LANG'
 
 //auth.js
 export const LOGOUT = 'LOGOUT'

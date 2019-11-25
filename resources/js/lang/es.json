@@ -4,7 +4,10 @@
         "close": "Cerrar",
         "save": "Guardar",
         "update": "Actualizar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "en": "EN",
+        "es": "ES",
+        "signout": "Cerrar sesión"
     },
     "login-view": {
         "title": "Ingresa tus datos para iniciar sesión",

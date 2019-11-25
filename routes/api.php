@@ -21,6 +21,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::post('user/update/lang', function(Request $request) {
+        App\User::where('id', $request->user()->id)
+            ->update(['locale' => $request->lang]);
+    });
+
     Route::post('logout', 'Auth\LoginController@logout');
 
     Route::apiResources([
