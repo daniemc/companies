@@ -13,4 +13,9 @@ class Employee extends Model
         'email',
         'phone',
     ];
+
+    public function company()
+    {
+        return $this->hasOne('App\Company', 'id', 'company_id');
+    }
 }

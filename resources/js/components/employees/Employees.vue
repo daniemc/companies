@@ -36,7 +36,7 @@
                                             <td class="text-center">{{ employee.last_name }}</td>
                                             <td class="text-center">{{ employee.email }}</td>
                                             <td class="text-center">{{ employee.phone }}</td>
-                                            <td class="text-center">{{ employee.company_id }}</td>
+                                            <td class="text-center">{{ employee.company.name }}</td>
                                             <td class="text-center">
                                                 <button type="button" @click="editEmployee(employee.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-employees-form">
                                                     <i class="fas fa-edit"></i>

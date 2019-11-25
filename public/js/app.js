@@ -43336,7 +43336,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(_vm._s(employee.company_id))
+                              _vm._v(_vm._s(employee.company.name))
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
