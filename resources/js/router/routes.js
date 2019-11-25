@@ -27,4 +27,11 @@ export const routes = [
         layout: 'appLayout',
         isPublic: false,
     },
+    {
+        path: '*',
+        name: 'not_found',
+        component: require('./../components/commons/404.vue').default,
+        layout: 'defaultLayout',
+        isPublic: true
+    }
 ]

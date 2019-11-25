@@ -36,5 +36,10 @@
         "btn-new": "Nuevo",
         "new-employee": "Nuevo empleado",
         "update-employee": "Actualizar empleado"
+    },
+    "404-view": {
+        "title": "Oops! Pagina no encontrada.",
+        "text": "No hemos podido encontrar la pagina solicitada. Quizas quieras ",
+        "btn_text": "regresar a inicio"
     }
 }
