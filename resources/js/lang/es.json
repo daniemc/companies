@@ -23,5 +23,18 @@
         "btn-new": "Nuevo",
         "new-company": "Nueva compañía",
         "update-company": "Actualizar compañía"
+    },
+    "employees-view": {
+        "employee-fields": {
+            "first_name": "Nombres",
+            "last_name": "Apellidos",
+            "email": "Correo electrónico",
+            "phone": "Teléfono",
+            "company": "Compañía",
+            "actions": "Acciones"
+        },
+        "btn-new": "Nuevo",
+        "new-employee": "Nuevo empleado",
+        "update-employee": "Actualizar empleado"
     }
 }

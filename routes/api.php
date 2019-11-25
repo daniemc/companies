@@ -25,5 +25,6 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::apiResources([
         'company' => 'API\CompanyController',
+        'employee' => 'API\EmployeeController'
     ]);
 });

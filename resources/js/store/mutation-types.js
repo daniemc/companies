@@ -9,3 +9,6 @@ export const SET_USER = 'SET_USER'
 
 //company.js
 export const SET_COMPANIES = 'SET_COMPANIES'
+
+//employees.js
+export const SET_EMPLOYEES = 'SET_EMPLOYEES'

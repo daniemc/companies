@@ -23,7 +23,7 @@ export const routes = [
     {
         path: '/employees',
         name: 'employees',
-        component: require('./../components/employees.vue').default,
+        component: require('./../components/employees/employees.vue').default,
         layout: 'appLayout',
         isPublic: false,
     },

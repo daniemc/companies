@@ -1,0 +1,143 @@
+<template>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 v-if="!inEdition" class="modal-title">{{ $t('employees-view.new-employee') }}</h4>
+            <h4 v-else class="modal-title">{{ $t('employees-view.update-employee') }}</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="employeeName">{{ $t('employees-view.employee-fields.first_name') }}</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="employeeName"
+                        v-model="form.first_name"
+                        :placeholder="$t('employees-view.employee-fields.first_name')">
+                </div>
+                <div class="form-group">
+                    <label for="employeeLastName">{{ $t('employees-view.employee-fields.last_name') }}</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="employeeLastName"
+                        v-model="form.last_name"
+                        :placeholder="$t('employees-view.employee-fields.last_name')">
+                </div>
+                <div class="form-group">
+                    <label for="employeeEmail">{{ $t('employees-view.employee-fields.email') }}</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="employeeEmail"
+                        v-model="form.email"
+                        :placeholder="$t('employees-view.employee-fields.email')">
+                </div>
+                <div class="form-group">
+                    <label for="employeePhone">{{ $t('employees-view.employee-fields.phone') }}</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="employeePhone"
+                        v-model="form.phone"
+                        :placeholder="$t('employees-view.employee-fields.phone')">
+                </div>
+                <div class="form-group">
+                    <label for="employeeCompany">{{ $t('employees-view.employee-fields.company') }}</label>
+                    <select
+                        class="form-control"
+                        id="employeeCompany"
+                        v-model="form.company_id">
+                        <option
+                            v-for="(company, c) in companies"
+                            :key="c"
+                            :value="company.id">{{ company.name }}</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('commons.close') }}</button>
+            <button v-if="!inEdition" type="button" @click="saveEmployee" class="btn btn-primary">{{ $t('commons.save') }}</button>
+            <button v-else type="button" @click="updateEmployee" class="btn btn-primary">{{ $t('commons.update') }}</button>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'employees-form',
+        props: {
+            inEdition: {
+                type: Boolean,
+                default: false
+            },
+            data: {
+                type: Object,
+            },
+            companies: {
+                type: Array,
+            }
+        },
+        data() {
+            return {
+                form: new Form({
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: '',
+                    company_id: '',
+                })
+            }
+        },
+        watch: {
+            inEdition(newValue, oldValue) {
+                if (newValue && !oldValue) {
+                    if (Object.keys(this.$props.data).length > 0) {
+                        this.setFormData()
+                    }
+                }
+            }
+        },
+        methods: {
+            async saveEmployee() {
+                const { status } = await this.form.post('/employee')
+                if (status === 200) {
+                    this.$store.dispatch('fetchEmployees')
+                }
+            },
+            async updateEmployee() {
+                const { status } = await this.form.put(`/employee/${this.form.id}`)
+                if (status === 200) {
+                    this.$store.dispatch('fetchEmployees')
+                }
+            },
+            setFormData() {
+                const {
+                    id,
+                    first_name,
+                    last_name,
+                    email,
+                    phone,
+                    company_id
+                } = this.$props.data
+
+                this.form = new Form({
+                    id,
+                    first_name,
+                    last_name,
+                    email,
+                    phone,
+                    company_id
+                })
+            }
+        },
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>

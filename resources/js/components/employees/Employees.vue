@@ -11,9 +11,9 @@
                                     <div class="col-sm-12 col-md-6">
                                     </div>
                                     <div class="col-sm-12 col-md-6 text-right">
-                                        <button type="button" class="btn btn-success btn-md mt-3 mr-4" data-toggle="modal" data-target="#modal-companies-form">
+                                        <button type="button" class="btn btn-success btn-md mt-3 mr-4" data-toggle="modal" data-target="#modal-employees-form">
                                             <i class="fas fa-plus"></i>
-                                            {{ $t('companies-view.btn-new') }}
+                                            {{ $t('employees-view.btn-new') }}
                                         </button>
                                     </div>
                                 </div>
@@ -22,24 +22,26 @@
                                 <table class="table table-bordered table-hover table-condensed">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">{{ $t('companies-view.company-fields.name') }}</th>
-                                            <th class="text-center">{{ $t('companies-view.company-fields.email') }}</th>
-                                            <th class="text-center">{{ $t('companies-view.company-fields.logo') }}</th>
-                                            <th class="text-center">{{ $t('companies-view.company-fields.website') }}</th>
-                                            <th class="text-center">{{ $t('companies-view.company-fields.actions') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.first_name') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.last_name') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.email') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.phone') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.company') }}</th>
+                                            <th class="text-center">{{ $t('employees-view.employee-fields.actions') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(company, c) in companies" :key="c" >
-                                            <td class="text-center">{{ company.name }}</td>
-                                            <td class="text-center">{{ company.email }}</td>
-                                            <td class="text-center">{{ company.logo }}</td>
-                                            <td class="text-center">{{ company.website }}</td>
+                                        <tr v-for="(employee, c) in employees" :key="c" >
+                                            <td class="text-center">{{ employee.first_name }}</td>
+                                            <td class="text-center">{{ employee.last_name }}</td>
+                                            <td class="text-center">{{ employee.email }}</td>
+                                            <td class="text-center">{{ employee.phone }}</td>
+                                            <td class="text-center">{{ employee.company_id }}</td>
                                             <td class="text-center">
-                                                <button type="button" @click="editCompany(company.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-companies-form">
+                                                <button type="button" @click="editEmployee(employee.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-employees-form">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button type="button" @click="deleteCompany(company.id)" class="btn btn-danger btn-xs">
+                                                <button type="button" @click="deleteEmployee(employee.id)" class="btn btn-danger btn-xs">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -52,9 +54,9 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modal-companies-form">
+        <div class="modal fade" id="modal-employees-form">
             <div class="modal-dialog">
-                <companies-form :inEdition="inEdition" :data="companyInEdition"></companies-form>
+                <employees-form :inEdition="inEdition" :data="employeeInEdition" :companies="companies"></employees-form>
             </div>
         </div>
     </div>
@@ -62,45 +64,48 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import CompaniesForm from './Form'
+    import EmployeesForm from './Form'
+    import axios from 'axios'
     export default {
-        name: 'companies-view',
+        name: 'employees-view',
         components: {
-            'companies-form': CompaniesForm,
+            'employees-form': EmployeesForm,
         },
         data() {
             return {
-                pageName: 'Companies',
+                pageName: 'Employees',
                 pageBreadCrumb: [
                     { name: 'Home', active: false, url: '/home' },
-                    { name: 'Companies', active: true, url: '/companies' },
+                    { name: 'Employees', active: true, url: '/employees' },
                 ],
                 inEdition: false,
-                companyInEdition: {}
+                employeeInEdition: {}
             }
         },
         created () {
             this.init();
         },
         computed: mapGetters({
+            employees: 'employees',
             companies: 'companies',
         }),
         methods: {
             init() {
+                this.$store.dispatch('fetchEmployees')
                 this.$store.dispatch('fetchCompanies')
             },
-            editCompany(id) {
+            editEmployee(id) {
                 this.inEdition = true
-                this.companyInEdition = this.companies.find(company => company.id === id)
+                this.employeeInEdition = this.employees.find(employee => employee.id === id)
             },
-            deleteCompany(id) {
-                axios.delete(`/company/${id}`)
+            deleteEmployee(id) {
+                axios.delete(`/employee/${id}`)
                     .then(({ status }) => {
                         if (status === 200) {
-                            this.$store.dispatch('fetchCompanies')
+                            this.$store.dispatch('fetchEmployees')
                         }
                     })
-            }
+            },
         },
     }
 </script>
