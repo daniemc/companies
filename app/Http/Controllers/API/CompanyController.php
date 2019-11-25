@@ -5,7 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\CompanyCreated;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Mail;
 
 class CompanyController extends Controller
 {
@@ -30,9 +32,15 @@ class CompanyController extends Controller
         $this->validateCompany($request);
         $file_path = $this->storeFile($request->file('logo'));
 
-        Company::create(
+        $company = Company::create(
             array_merge($request->except('logo'), ['logo' => $file_path])
         );
+
+        Mail::to([$request->email])
+            ->queue(
+                (new CompanyCreated($company))
+                ->onQueue('emails')
+            );
     }
 
     /**
