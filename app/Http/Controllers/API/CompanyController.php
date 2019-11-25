@@ -27,7 +27,14 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $this->validateCompany($request);
-        Company::create($request->all());
+        $file = $request->file('logo');
+        $file_name = $file->getClientOriginalName();
+        $path = "companies\logos";
+        $file_path = $file->storeAs($path, $file_name, 'public');
+
+        Company::create(
+            array_merge($request->except('logo'), ['logo' => $file_path])
+        );
     }
 
     /**
@@ -77,7 +84,7 @@ class CompanyController extends Controller
         $request->validate([
             'name' => 'required|string|max:191',
             'email' => 'nullable|email|max:191',
-            'logo' => '',
+            'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
             'website' => 'nullable|url|max:191',
         ]);
     }

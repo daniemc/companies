@@ -34,10 +34,10 @@
                 <div class="form-group">
                     <label for="companyLogo">{{ $t('companies-view.company-fields.logo') }}</label>
                     <input
-                        type="text"
+                        type="file"
                         class="form-control"
                         id="companyLogo"
-                        v-model="form.logo"
+                        @change="selectFile"
                         :class="{ 'is-invalid': form.errors.has('logo') }"
                         :placeholder="$t('companies-view.company-fields.logo')">
                         <has-error :form="form" field="logo"></has-error>
@@ -64,6 +64,7 @@
 </template>
 
 <script>
+    import objectToFormData from 'object-to-formdata'
     export default {
         name: 'companies-form',
         props: {
@@ -81,7 +82,7 @@
                     id: '',
                     name: '',
                     email: '',
-                    logo: '',
+                    logo: null,
                     website: '',
                 })
             }
@@ -97,7 +98,11 @@
         },
         methods: {
             async saveCompany() {
-                const { status } = await this.form.post('/company')
+                const { status } = await this.form.post('/company', {
+                    transformRequest: [function(data, headers) {
+                        return objectToFormData(data)
+                    }]
+                })
                 console.log(status)
                 if (status === 200 || status === 201) {
                     this.$store.dispatch('fetchCompanies')
@@ -126,6 +131,10 @@
                     logo,
                     website
                 })
+            },
+            selectFile(e) {
+                const file = e.target.files[0]
+                this.form.logo = file
             }
         },
     }
