@@ -117,12 +117,32 @@
                 const { status } = await this.form.post('/employee')
                 if (status === 200) {
                     this.$store.dispatch('fetchEmployees', { page: 1})
+                    this.$swal.fire({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        title: this.$t('messages.success'),
+                        text: this.$t('employees-view.messages.saved'),
+                        type: 'success',
+                    })
                 }
             },
             async updateEmployee() {
                 const { status } = await this.form.put(`/employee/${this.form.id}`)
                 if (status === 200) {
                     this.$store.dispatch('fetchEmployees', { page: 1})
+                    this.$swal.fire({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        title: this.$t('messages.success'),
+                        text: this.$t('employees-view.messages.updated'),
+                        type: 'success',
+                    })
                 }
             },
             setFormData() {

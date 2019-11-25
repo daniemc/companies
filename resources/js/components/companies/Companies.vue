@@ -106,6 +106,16 @@
                     .then(({ status }) => {
                         if (status === 200) {
                             this.$store.dispatch('fetchCompanies', { page: 1 })
+                            this.$swal.fire({
+                                toast: true,
+                                position: 'bottom-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                title: this.$t('messages.success'),
+                                text: this.$t('companies-view.messages.deleted'),
+                                type: 'success',
+                            })
                         }
                     })
             },

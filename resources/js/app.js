@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 import App from './components/App'
 import './plugins/axios'
+import './plugins/swal'
 import i18n from './plugins/i18n'
 import { Form, HasError, AlertError } from 'vform'
 window.Form = Form

@@ -111,6 +111,16 @@
                     .then(({ status }) => {
                         if (status === 200) {
                             this.$store.dispatch('fetchEmployees', { page: 1})
+                            this.$swal.fire({
+                                toast: true,
+                                position: 'bottom-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                title: this.$t('messages.success'),
+                                text: this.$t('employees-view.messages.deleted'),
+                                type: 'success',
+                            })
                         }
                     })
             },

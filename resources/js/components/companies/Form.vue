@@ -106,6 +106,16 @@
                 if (status === 200) {
                     this.resetForm()
                     this.$store.dispatch('fetchCompanies', { page: 1})
+                    this.$swal.fire({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        title: this.$t('messages.success'),
+                        text: this.$t('companies-view.messages.saved'),
+                        type: 'success',
+                    })
                 }
             },
             async updateCompany() {
@@ -120,6 +130,16 @@
                     }
                     this.resetForm()
                     this.$store.dispatch('fetchCompanies', { page: 1})
+                    this.$swal.fire({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        title: this.$t('messages.success'),
+                        text: this.$t('companies-view.messages.updated'),
+                        type: 'success',
+                    })
                 }
             },
             setFormData() {
