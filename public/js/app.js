@@ -2166,6 +2166,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'companies-form',
   props: {
@@ -42445,133 +42453,165 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "modal-body" }, [
       _c("form", [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "companyName" } }, [
-            _vm._v(_vm._s(_vm.$t("companies-view.company-fields.name")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.name,
-                expression: "form.name"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "companyName",
-              placeholder: _vm.$t("companies-view.company-fields.name")
-            },
-            domProps: { value: _vm.form.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "companyName" } }, [
+              _vm._v(_vm._s(_vm.$t("companies-view.company-fields.name")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
                 }
-                _vm.$set(_vm.form, "name", $event.target.value)
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("name") },
+              attrs: {
+                type: "text",
+                id: "companyName",
+                placeholder: _vm.$t("companies-view.company-fields.name")
+              },
+              domProps: { value: _vm.form.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
               }
-            }
-          })
-        ]),
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "name" } })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "companyEmail" } }, [
-            _vm._v(_vm._s(_vm.$t("companies-view.company-fields.email")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.email,
-                expression: "form.email"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              id: "companyEmail",
-              placeholder: _vm.$t("companies-view.company-fields.email")
-            },
-            domProps: { value: _vm.form.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "companyEmail" } }, [
+              _vm._v(_vm._s(_vm.$t("companies-view.company-fields.email")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
                 }
-                _vm.$set(_vm.form, "email", $event.target.value)
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("email") },
+              attrs: {
+                type: "email",
+                id: "companyEmail",
+                placeholder: _vm.$t("companies-view.company-fields.email")
+              },
+              domProps: { value: _vm.form.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
               }
-            }
-          })
-        ]),
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "email" } })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "companyLogo" } }, [
-            _vm._v(_vm._s(_vm.$t("companies-view.company-fields.logo")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.logo,
-                expression: "form.logo"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "companyLogo",
-              placeholder: _vm.$t("companies-view.company-fields.logo")
-            },
-            domProps: { value: _vm.form.logo },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "companyLogo" } }, [
+              _vm._v(_vm._s(_vm.$t("companies-view.company-fields.logo")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.logo,
+                  expression: "form.logo"
                 }
-                _vm.$set(_vm.form, "logo", $event.target.value)
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("logo") },
+              attrs: {
+                type: "text",
+                id: "companyLogo",
+                placeholder: _vm.$t("companies-view.company-fields.logo")
+              },
+              domProps: { value: _vm.form.logo },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "logo", $event.target.value)
+                }
               }
-            }
-          })
-        ]),
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "logo" } })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "companyWebsite" } }, [
-            _vm._v(_vm._s(_vm.$t("companies-view.company-fields.website")))
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.website,
-                expression: "form.website"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "companyWebsite",
-              placeholder: _vm.$t("companies-view.company-fields.website")
-            },
-            domProps: { value: _vm.form.website },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { attrs: { for: "companyWebsite" } }, [
+              _vm._v(_vm._s(_vm.$t("companies-view.company-fields.website")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.website,
+                  expression: "form.website"
                 }
-                _vm.$set(_vm.form, "website", $event.target.value)
+              ],
+              staticClass: "form-control",
+              class: { "is-invalid": _vm.form.errors.has("website") },
+              attrs: {
+                type: "text",
+                id: "companyWebsite",
+                placeholder: _vm.$t("companies-view.company-fields.website")
+              },
+              domProps: { value: _vm.form.website },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "website", $event.target.value)
+                }
               }
-            }
-          })
-        ])
+            }),
+            _vm._v(" "),
+            _c("has-error", { attrs: { form: _vm.form, field: "website" } })
+          ],
+          1
+        )
       ])
     ]),
     _vm._v(" "),

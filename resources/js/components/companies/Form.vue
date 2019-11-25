@@ -16,7 +16,9 @@
                         class="form-control"
                         id="companyName"
                         v-model="form.name"
+                        :class="{ 'is-invalid': form.errors.has('name') }"
                         :placeholder="$t('companies-view.company-fields.name')">
+                        <has-error :form="form" field="name"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="companyEmail">{{ $t('companies-view.company-fields.email') }}</label>
@@ -25,7 +27,9 @@
                         class="form-control"
                         id="companyEmail"
                         v-model="form.email"
+                        :class="{ 'is-invalid': form.errors.has('email') }"
                         :placeholder="$t('companies-view.company-fields.email')">
+                        <has-error :form="form" field="email"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="companyLogo">{{ $t('companies-view.company-fields.logo') }}</label>
@@ -34,7 +38,9 @@
                         class="form-control"
                         id="companyLogo"
                         v-model="form.logo"
+                        :class="{ 'is-invalid': form.errors.has('logo') }"
                         :placeholder="$t('companies-view.company-fields.logo')">
+                        <has-error :form="form" field="logo"></has-error>
                 </div>
                 <div class="form-group">
                     <label for="companyWebsite">{{ $t('companies-view.company-fields.website') }}</label>
@@ -43,7 +49,9 @@
                         class="form-control"
                         id="companyWebsite"
                         v-model="form.website"
+                        :class="{ 'is-invalid': form.errors.has('website') }"
                         :placeholder="$t('companies-view.company-fields.website')">
+                        <has-error :form="form" field="website"></has-error>
                 </div>
             </form>
         </div>

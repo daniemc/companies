@@ -26,6 +26,7 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validateCompany($request);
         Company::create($request->all());
     }
 
@@ -62,5 +63,22 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         Company::destroy($company->id);
+    }
+
+    /**
+     * Validate company model after create or update
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     */
+    protected function validateCompany(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email',
+            'logo' => '',
+            'website' => '',
+            'actions' => '',
+        ]);
     }
 }
