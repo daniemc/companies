@@ -78,10 +78,10 @@
         },
         data() {
             return {
-                pageName: 'Companies',
+                pageName: this.$t('companies-view.name'),
                 pageBreadCrumb: [
-                    { name: 'Home', active: false, url: '/home' },
-                    { name: 'Companies', active: true, url: '/companies' },
+                    { name: this.$t('home-view.name'), active: false, url: '/home' },
+                    { name: this.$t('companies-view.name'), active: true, url: '/companies' },
                 ],
                 inEdition: false,
                 companyInEdition: {}

@@ -2135,11 +2135,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       imgUrl: window.config.companyImg,
       menu: [{
-        text: 'Companies',
+        text: this.$t('companies-view.name'),
         url: '/companies',
         icon: 'fas fa-building'
       }, {
-        text: 'Employees',
+        text: this.$t('employees-view.name'),
         url: '/employees',
         icon: 'fas fa-users'
       }]
@@ -2486,13 +2486,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      pageName: 'Companies',
+      pageName: this.$t('companies-view.name'),
       pageBreadCrumb: [{
-        name: 'Home',
+        name: this.$t('home-view.name'),
         active: false,
         url: '/home'
       }, {
-        name: 'Companies',
+        name: this.$t('companies-view.name'),
         active: true,
         url: '/companies'
       }],
@@ -2878,13 +2878,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      pageName: 'Employees',
+      pageName: this.$t('employees-view.name'),
       pageBreadCrumb: [{
-        name: 'Home',
+        name: this.$t('home-view.name'),
         active: false,
         url: '/home'
       }, {
-        name: 'Employees',
+        name: this.$t('employees-view.name'),
         active: true,
         url: '/employees'
       }],
@@ -46819,7 +46819,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("span", { staticClass: "brand-text font-weight-light" }, [
-            _vm._v("Companies")
+            _vm._v("Dashboard")
           ])
         ]
       ),
@@ -64988,10 +64988,10 @@ module.exports = JSON.parse("{\"lang\":\"en\"}");
 /*!***********************************!*\
   !*** ./resources/js/lang/es.json ***!
   \***********************************/
-/*! exports provided: lang, commons, login-view, companies-view, employees-view, 404-view, messages, default */
+/*! exports provided: lang, commons, login-view, home-view, companies-view, employees-view, 404-view, messages, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"lang\":\"es\",\"commons\":{\"close\":\"Cerrar\",\"save\":\"Guardar\",\"update\":\"Actualizar\",\"cancel\":\"Cancelar\"},\"login-view\":{\"title\":\"Ingresa tus datos para iniciar sesión\",\"email\":\"Correo electrónico\",\"password\":\"Contraseña\",\"login\":\"Iniciar sesión\"},\"companies-view\":{\"company-fields\":{\"name\":\"Nombre\",\"email\":\"Correo electrónico\",\"logo\":\"Logo\",\"website\":\"Sitio Web\",\"actions\":\"Acciones\"},\"btn-new\":\"Nuevo\",\"new-company\":\"Nueva compañía\",\"update-company\":\"Actualizar compañía\",\"messages\":{\"saved\":\"Compañía guardada correctamente\",\"updated\":\"Compañía actualizada correctamente\",\"deleted\":\"Compañía eliminada correctamente\"}},\"employees-view\":{\"employee-fields\":{\"first_name\":\"Nombres\",\"last_name\":\"Apellidos\",\"email\":\"Correo electrónico\",\"phone\":\"Teléfono\",\"company\":\"Compañía\",\"actions\":\"Acciones\"},\"btn-new\":\"Nuevo\",\"new-employee\":\"Nuevo empleado\",\"update-employee\":\"Actualizar empleado\",\"messages\":{\"saved\":\"Empleado guardado correctamente\",\"updated\":\"Empleado actualizado correctamente\",\"deleted\":\"Empleado eliminado correctamente\"}},\"404-view\":{\"title\":\"Oops! Pagina no encontrada.\",\"text\":\"No hemos podido encontrar la pagina solicitada. Quizas quieras \",\"btn_text\":\"regresar a inicio\"},\"messages\":{\"success\":\"Correcto!\",\"warning\":\"Cuidado!\",\"error\":\"Error!\",\"info\":\"Información\",\"expired_sesion_text\":\"La sesión ha expirado\",\"app_error\":\"Ha ocurrido un error.\"}}");
+module.exports = JSON.parse("{\"lang\":\"es\",\"commons\":{\"close\":\"Cerrar\",\"save\":\"Guardar\",\"update\":\"Actualizar\",\"cancel\":\"Cancelar\"},\"login-view\":{\"title\":\"Ingresa tus datos para iniciar sesión\",\"email\":\"Correo electrónico\",\"password\":\"Contraseña\",\"login\":\"Iniciar sesión\"},\"home-view\":{\"name\":\"Inicio\"},\"companies-view\":{\"name\":\"Compañías\",\"company-fields\":{\"name\":\"Nombre\",\"email\":\"Correo electrónico\",\"logo\":\"Logo\",\"website\":\"Sitio Web\",\"actions\":\"Acciones\"},\"btn-new\":\"Nuevo\",\"new-company\":\"Nueva compañía\",\"update-company\":\"Actualizar compañía\",\"messages\":{\"saved\":\"Compañía guardada correctamente\",\"updated\":\"Compañía actualizada correctamente\",\"deleted\":\"Compañía eliminada correctamente\"}},\"employees-view\":{\"name\":\"Empleados\",\"employee-fields\":{\"first_name\":\"Nombres\",\"last_name\":\"Apellidos\",\"email\":\"Correo electrónico\",\"phone\":\"Teléfono\",\"company\":\"Compañía\",\"actions\":\"Acciones\"},\"btn-new\":\"Nuevo\",\"new-employee\":\"Nuevo empleado\",\"update-employee\":\"Actualizar empleado\",\"messages\":{\"saved\":\"Empleado guardado correctamente\",\"updated\":\"Empleado actualizado correctamente\",\"deleted\":\"Empleado eliminado correctamente\"}},\"404-view\":{\"title\":\"Oops! Pagina no encontrada.\",\"text\":\"No hemos podido encontrar la pagina solicitada. Quizas quieras \",\"btn_text\":\"regresar a inicio\"},\"messages\":{\"success\":\"Correcto!\",\"warning\":\"Cuidado!\",\"error\":\"Error!\",\"info\":\"Información\",\"expired_sesion_text\":\"La sesión ha expirado\",\"app_error\":\"Ha ocurrido un error.\"}}");
 
 /***/ }),
 

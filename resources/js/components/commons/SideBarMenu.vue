@@ -4,7 +4,7 @@
     <router-link :to="({ name: 'home' })" class="brand-link">
       <img :src="imgUrl" alt="company_img" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Companies</span>
+      <span class="brand-text font-weight-light">Dashboard</span>
     </router-link>
 
     <!-- Sidebar -->
@@ -33,8 +33,8 @@
             return {
                 imgUrl: window.config.companyImg,
                 menu: [
-                    { text: 'Companies', url: '/companies', icon: 'fas fa-building' },
-                    { text: 'Employees', url: '/employees', icon: 'fas fa-users' },
+                    { text: this.$t('companies-view.name'), url: '/companies', icon: 'fas fa-building' },
+                    { text: this.$t('employees-view.name'), url: '/employees', icon: 'fas fa-users' },
                 ]
             }
         }

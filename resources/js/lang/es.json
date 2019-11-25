@@ -12,7 +12,11 @@
         "password": "Contraseña",
         "login": "Iniciar sesión"
     },
+    "home-view": {
+        "name": "Inicio"
+    },
     "companies-view": {
+        "name": "Compañías",
         "company-fields": {
             "name": "Nombre",
             "email": "Correo electrónico",
@@ -30,6 +34,7 @@
         }
     },
     "employees-view": {
+        "name": "Empleados",
         "employee-fields": {
             "first_name": "Nombres",
             "last_name": "Apellidos",

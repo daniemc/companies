@@ -81,10 +81,10 @@
         },
         data() {
             return {
-                pageName: 'Employees',
+                pageName: this.$t('employees-view.name'),
                 pageBreadCrumb: [
-                    { name: 'Home', active: false, url: '/home' },
-                    { name: 'Employees', active: true, url: '/employees' },
+                    { name: this.$t('home-view.name'), active: false, url: '/home' },
+                    { name: this.$t('employees-view.name'), active: true, url: '/employees' },
                 ],
                 inEdition: false,
                 employeeInEdition: {}
