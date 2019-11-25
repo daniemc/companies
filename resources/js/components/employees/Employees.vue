@@ -11,7 +11,12 @@
                                     <div class="col-sm-12 col-md-6">
                                     </div>
                                     <div class="col-sm-12 col-md-6 text-right">
-                                        <button type="button" class="btn btn-success btn-md mt-3 mr-4" data-toggle="modal" data-target="#modal-employees-form">
+                                        <button
+                                            type="button"
+                                            class="btn btn-success btn-md mt-3 mr-4"
+                                            data-toggle="modal"
+                                            data-target="#modal-employees-form"
+                                            @click="employeeInEdition = {}">
                                             <i class="fas fa-plus"></i>
                                             {{ $t('employees-view.btn-new') }}
                                         </button>
@@ -59,7 +64,7 @@
         </div>
         <div class="modal fade" id="modal-employees-form">
             <div class="modal-dialog">
-                <employees-form :inEdition="inEdition" :data="employeeInEdition" :companies="companies"></employees-form>
+                <employees-form :inEdition="inEdition" :data="employeeInEdition" :companies="companies" v-on:onClearModal="inEdition = false"></employees-form>
             </div>
         </div>
     </div>

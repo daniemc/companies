@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h4 v-if="!inEdition" class="modal-title">{{ $t('companies-view.new-company') }}</h4>
             <h4 v-else class="modal-title">{{ $t('companies-view.update-company') }}</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" @click="resetForm" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -56,7 +56,7 @@
             </form>
         </div>
         <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('commons.close') }}</button>
+            <button type="button" class="btn btn-default" @click="resetForm">{{ $t('commons.close') }}</button>
             <button v-if="!inEdition" type="button" @click="saveCompany" class="btn btn-primary">{{ $t('commons.save') }}</button>
             <button v-else type="button" @click="updateCompany" class="btn btn-primary">{{ $t('commons.update') }}</button>
         </div>
@@ -104,6 +104,7 @@
                     }]
                 })
                 if (status === 200) {
+                    this.resetForm()
                     this.$store.dispatch('fetchCompanies', { page: 1})
                 }
             },
@@ -117,6 +118,7 @@
                             }]
                         })
                     }
+                    this.resetForm()
                     this.$store.dispatch('fetchCompanies', { page: 1})
                 }
             },
@@ -139,6 +141,19 @@
             selectFile(e) {
                 const file = e.target.files[0]
                 this.form.logo = file
+            },
+            resetForm() {
+                $('#modal-companies-form').modal('hide')
+                this.form.clear()
+                this.form.reset()
+                this.form = new Form({
+                    id: '',
+                    name: '',
+                    email: '',
+                    logo: null,
+                    website: '',
+                })
+                this.$emit('onClearModal')
             }
         },
     }

@@ -2227,6 +2227,7 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref.status;
 
               if (status === 200) {
+                this.resetForm();
                 this.$store.dispatch('fetchCompanies', {
                   page: 1
                 });
@@ -2254,7 +2255,7 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref2.status;
 
               if (!(status === 200)) {
-                _context2.next = 11;
+                _context2.next = 12;
                 break;
               }
 
@@ -2275,11 +2276,12 @@ __webpack_require__.r(__webpack_exports__);
               statusLogo = _ref3.statusLogo;
 
             case 10:
+              this.resetForm();
               this.$store.dispatch('fetchCompanies', {
                 page: 1
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context2.stop();
           }
@@ -2303,6 +2305,19 @@ __webpack_require__.r(__webpack_exports__);
     selectFile: function selectFile(e) {
       var file = e.target.files[0];
       this.form.logo = file;
+    },
+    resetForm: function resetForm() {
+      $('#modal-companies-form').modal('hide');
+      this.form.clear();
+      this.form.reset();
+      this.form = new Form({
+        id: '',
+        name: '',
+        email: '',
+        logo: null,
+        website: ''
+      });
+      this.$emit('onClearModal');
     }
   }
 });
@@ -2320,6 +2335,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/components/companies/Form.vue");
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2641,6 +2661,19 @@ __webpack_require__.r(__webpack_exports__);
         phone: phone,
         company_id: company_id
       });
+    },
+    resetForm: function resetForm() {
+      $('#modal-employees-form').modal('hide');
+      this.form.clear();
+      this.form.reset();
+      this.form = new Form({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        company_id: ''
+      });
+      this.$emit('onClearModal');
     }
   }
 });
@@ -2660,6 +2693,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/components/employees/Form.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43118,7 +43156,15 @@ var render = function() {
             _vm._v(_vm._s(_vm.$t("companies-view.update-company")))
           ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "aria-label": "Close" },
+          on: { click: _vm.resetForm }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "modal-body" }, [
@@ -43274,7 +43320,8 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-default",
-          attrs: { type: "button", "data-dismiss": "modal" }
+          attrs: { type: "button" },
+          on: { click: _vm.resetForm }
         },
         [_vm._v(_vm._s(_vm.$t("commons.close")))]
       ),
@@ -43301,25 +43348,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43369,6 +43398,11 @@ var render = function() {
                               type: "button",
                               "data-toggle": "modal",
                               "data-target": "#modal-companies-form"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.companyInEdition = {}
+                              }
                             }
                           },
                           [
@@ -43524,7 +43558,12 @@ var render = function() {
             { staticClass: "modal-dialog" },
             [
               _c("companies-form", {
-                attrs: { inEdition: _vm.inEdition, data: _vm.companyInEdition }
+                attrs: { inEdition: _vm.inEdition, data: _vm.companyInEdition },
+                on: {
+                  onClearModal: function($event) {
+                    _vm.inEdition = false
+                  }
+                }
               })
             ],
             1
@@ -43567,7 +43606,15 @@ var render = function() {
             _vm._v(_vm._s(_vm.$t("employees-view.update-employee")))
           ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "aria-label": "Close" },
+          on: { click: _vm.resetForm }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "modal-body" }, [
@@ -43796,7 +43843,8 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-default",
-          attrs: { type: "button", "data-dismiss": "modal" }
+          attrs: { type: "button" },
+          on: { click: _vm.resetForm }
         },
         [_vm._v(_vm._s(_vm.$t("commons.close")))]
       ),
@@ -43823,25 +43871,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "modal",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43891,6 +43921,11 @@ var render = function() {
                               type: "button",
                               "data-toggle": "modal",
                               "data-target": "#modal-employees-form"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.employeeInEdition = {}
+                              }
                             }
                           },
                           [
@@ -44066,6 +44101,11 @@ var render = function() {
                   inEdition: _vm.inEdition,
                   data: _vm.employeeInEdition,
                   companies: _vm.companies
+                },
+                on: {
+                  onClearModal: function($event) {
+                    _vm.inEdition = false
+                  }
                 }
               })
             ],

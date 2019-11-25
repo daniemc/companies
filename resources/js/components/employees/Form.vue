@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h4 v-if="!inEdition" class="modal-title">{{ $t('employees-view.new-employee') }}</h4>
             <h4 v-else class="modal-title">{{ $t('employees-view.update-employee') }}</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" @click="resetForm" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -70,7 +70,7 @@
             </form>
         </div>
         <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('commons.close') }}</button>
+            <button type="button" class="btn btn-default" @click="resetForm">{{ $t('commons.close') }}</button>
             <button v-if="!inEdition" type="button" @click="saveEmployee" class="btn btn-primary">{{ $t('commons.save') }}</button>
             <button v-else type="button" @click="updateEmployee" class="btn btn-primary">{{ $t('commons.update') }}</button>
         </div>
@@ -143,6 +143,19 @@
                     phone,
                     company_id
                 })
+            },
+            resetForm() {
+                $('#modal-employees-form').modal('hide')
+                this.form.clear()
+                this.form.reset()
+                this.form = new Form({
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: '',
+                    company_id: '',
+                })
+                this.$emit('onClearModal')
             }
         },
     }
