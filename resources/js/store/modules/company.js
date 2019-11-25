@@ -3,7 +3,8 @@ import * as types from '../mutation-types'
 
 //state
 export const state = {
-    companies: []
+    companies: [],
+    allCompanies: []
 }
 
 //actions
@@ -15,6 +16,14 @@ export const actions = {
                     commit(types.SET_COMPANIES, data)
                 }
             })
+    },
+    fetchAllCompanies({ commit }) {
+        axios.get(`/companies`)
+            .then(({ data, status }) => {
+                if (status === 200) {
+                    commit(types.SET_ALL_COMPANIES, data)
+                }
+            })
     }
 }
 
@@ -22,10 +31,14 @@ export const actions = {
 export const mutations = {
     [types.SET_COMPANIES] (state, companies) {
         state.companies = companies
+    },
+    [types.SET_ALL_COMPANIES] (state, companies) {
+        state.allCompanies = companies
     }
 }
 
 //getters
 export const getters = {
-    companies: state => state.companies
+    companies: state => state.companies,
+    allCompanies: state => state.allCompanies
 }

@@ -27,4 +27,6 @@ Route::group(['middleware' => 'auth:api'], function () {
         'company' => 'API\CompanyController',
         'employee' => 'API\EmployeeController'
     ]);
+
+    Route::get('companies', 'API\CompanyController@allCompanies');
 });

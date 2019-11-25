@@ -104,13 +104,13 @@
                     }]
                 })
                 if (status === 200) {
-                    this.$store.dispatch('fetchCompanies')
+                    this.$store.dispatch('fetchCompanies', { page: 1})
                 }
             },
             async updateCompany() {
                 const { status } = await this.form.put(`/company/${this.form.id}`)
                 if (status === 200) {
-                    this.$store.dispatch('fetchCompanies')
+                    this.$store.dispatch('fetchCompanies', { page: 1})
                 }
             },
             setFormData() {

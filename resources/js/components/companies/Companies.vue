@@ -94,13 +94,13 @@
             },
             editCompany(id) {
                 this.inEdition = true
-                this.companyInEdition = this.companies.find(company => company.id === id)
+                this.companyInEdition = this.companies.data.find(company => company.id === id)
             },
             deleteCompany(id) {
                 axios.delete(`/company/${id}`)
                     .then(({ status }) => {
                         if (status === 200) {
-                            this.$store.dispatch('fetchCompanies', 1)
+                            this.$store.dispatch('fetchCompanies', { page: 1 })
                         }
                     })
             },

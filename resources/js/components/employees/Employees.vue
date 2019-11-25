@@ -31,7 +31,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(employee, c) in employees" :key="c" >
+                                        <tr v-for="(employee, c) in employees.data" :key="c" >
                                             <td class="text-center">{{ employee.first_name }}</td>
                                             <td class="text-center">{{ employee.last_name }}</td>
                                             <td class="text-center">{{ employee.email }}</td>
@@ -48,6 +48,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="card-footer">
+                                <pagination :data="employees" @pagination-change-page="init"></pagination>
                             </div>
                         </div>
                     </div>
@@ -87,22 +90,22 @@
         },
         computed: mapGetters({
             employees: 'employees',
-            companies: 'companies',
+            companies: 'allCompanies',
         }),
         methods: {
-            init() {
-                this.$store.dispatch('fetchEmployees')
-                this.$store.dispatch('fetchCompanies')
+            init(page = 1) {
+                this.$store.dispatch('fetchEmployees', { page })
+                this.$store.dispatch('fetchAllCompanies')
             },
             editEmployee(id) {
                 this.inEdition = true
-                this.employeeInEdition = this.employees.find(employee => employee.id === id)
+                this.employeeInEdition = this.employees.data.find(employee => employee.id === id)
             },
             deleteEmployee(id) {
                 axios.delete(`/employee/${id}`)
                     .then(({ status }) => {
                         if (status === 200) {
-                            this.$store.dispatch('fetchEmployees')
+                            this.$store.dispatch('fetchEmployees', { page: 1})
                         }
                     })
             },

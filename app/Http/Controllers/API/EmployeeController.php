@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::with(['company'])->get();
+        return Employee::with('company')->paginate(10);
     }
 
     /**

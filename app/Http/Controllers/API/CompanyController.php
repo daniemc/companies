@@ -79,6 +79,16 @@ class CompanyController extends Controller
     }
 
     /**
+     * Return all companies without pagination
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function allCompanies()
+    {
+        return Company::all();
+    }
+
+    /**
      * Validate company model after create or update
      *
      * @param \Illuminate\Http\Request $request

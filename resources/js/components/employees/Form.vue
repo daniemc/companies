@@ -116,13 +116,13 @@
             async saveEmployee() {
                 const { status } = await this.form.post('/employee')
                 if (status === 200) {
-                    this.$store.dispatch('fetchEmployees')
+                    this.$store.dispatch('fetchEmployees', { page: 1})
                 }
             },
             async updateEmployee() {
                 const { status } = await this.form.put(`/employee/${this.form.id}`)
                 if (status === 200) {
-                    this.$store.dispatch('fetchEmployees')
+                    this.$store.dispatch('fetchEmployees', { page: 1})
                 }
             },
             setFormData() {

@@ -2227,7 +2227,9 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref.status;
 
               if (status === 200) {
-                this.$store.dispatch('fetchCompanies');
+                this.$store.dispatch('fetchCompanies', {
+                  page: 1
+                });
               }
 
             case 5:
@@ -2252,7 +2254,9 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref2.status;
 
               if (status === 200) {
-                this.$store.dispatch('fetchCompanies');
+                this.$store.dispatch('fetchCompanies', {
+                  page: 1
+                });
               }
 
             case 5:
@@ -2399,7 +2403,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     editCompany: function editCompany(id) {
       this.inEdition = true;
-      this.companyInEdition = this.companies.find(function (company) {
+      this.companyInEdition = this.companies.data.find(function (company) {
         return company.id === id;
       });
     },
@@ -2410,7 +2414,9 @@ __webpack_require__.r(__webpack_exports__);
         var status = _ref.status;
 
         if (status === 200) {
-          _this.$store.dispatch('fetchCompanies', 1);
+          _this.$store.dispatch('fetchCompanies', {
+            page: 1
+          });
         }
       });
     }
@@ -2560,7 +2566,9 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref.status;
 
               if (status === 200) {
-                this.$store.dispatch('fetchEmployees');
+                this.$store.dispatch('fetchEmployees', {
+                  page: 1
+                });
               }
 
             case 5:
@@ -2585,7 +2593,9 @@ __webpack_require__.r(__webpack_exports__);
               status = _ref2.status;
 
               if (status === 200) {
-                this.$store.dispatch('fetchEmployees');
+                this.$store.dispatch('fetchEmployees', {
+                  page: 1
+                });
               }
 
             case 5:
@@ -2694,6 +2704,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2723,16 +2736,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     employees: 'employees',
-    companies: 'companies'
+    companies: 'allCompanies'
   }),
   methods: {
     init: function init() {
-      this.$store.dispatch('fetchEmployees');
-      this.$store.dispatch('fetchCompanies');
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.$store.dispatch('fetchEmployees', {
+        page: page
+      });
+      this.$store.dispatch('fetchAllCompanies');
     },
     editEmployee: function editEmployee(id) {
       this.inEdition = true;
-      this.employeeInEdition = this.employees.find(function (employee) {
+      this.employeeInEdition = this.employees.data.find(function (employee) {
         return employee.id === id;
       });
     },
@@ -2743,7 +2759,9 @@ __webpack_require__.r(__webpack_exports__);
         var status = _ref.status;
 
         if (status === 200) {
-          _this.$store.dispatch('fetchEmployees');
+          _this.$store.dispatch('fetchEmployees', {
+            page: 1
+          });
         }
       });
     }
@@ -43935,7 +43953,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.employees, function(employee, c) {
+                        _vm._l(_vm.employees.data, function(employee, c) {
                           return _c("tr", { key: c }, [
                             _c("td", { staticClass: "text-center" }, [
                               _vm._v(_vm._s(employee.first_name))
@@ -43996,7 +44014,19 @@ var render = function() {
                       )
                     ]
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "card-footer" },
+                  [
+                    _c("pagination", {
+                      attrs: { data: _vm.employees },
+                      on: { "pagination-change-page": _vm.init }
+                    })
+                  ],
+                  1
+                )
               ])
             ])
           ])
@@ -61571,13 +61601,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mutation_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mutation-types */ "./resources/js/store/mutation-types.js");
+var _mutations;
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
  //state
 
 var state = {
-  companies: []
+  companies: [],
+  allCompanies: []
 }; //actions
 
 var actions = {
@@ -61592,16 +61625,32 @@ var actions = {
         commit(_mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_COMPANIES"], data);
       }
     });
+  },
+  fetchAllCompanies: function fetchAllCompanies(_ref4) {
+    var commit = _ref4.commit;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/companies").then(function (_ref5) {
+      var data = _ref5.data,
+          status = _ref5.status;
+
+      if (status === 200) {
+        commit(_mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_ALL_COMPANIES"], data);
+      }
+    });
   }
 }; //mutations
 
-var mutations = _defineProperty({}, _mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_COMPANIES"], function (state, companies) {
+var mutations = (_mutations = {}, _defineProperty(_mutations, _mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_COMPANIES"], function (state, companies) {
   state.companies = companies;
-}); //getters
+}), _defineProperty(_mutations, _mutation_types__WEBPACK_IMPORTED_MODULE_1__["SET_ALL_COMPANIES"], function (state, companies) {
+  state.allCompanies = companies;
+}), _mutations); //getters
 
 var getters = {
   companies: function companies(state) {
     return state.companies;
+  },
+  allCompanies: function allCompanies(state) {
+    return state.allCompanies;
   }
 };
 
@@ -61633,11 +61682,12 @@ var state = {
 }; //actions
 
 var actions = {
-  fetchEmployees: function fetchEmployees(_ref) {
+  fetchEmployees: function fetchEmployees(_ref, _ref2) {
     var commit = _ref.commit;
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/employee').then(function (_ref2) {
-      var data = _ref2.data,
-          status = _ref2.status;
+    var page = _ref2.page;
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/employee?page=".concat(page)).then(function (_ref3) {
+      var data = _ref3.data,
+          status = _ref3.status;
 
       if (status === 200) {
         commit(_mutation_types__WEBPACK_IMPORTED_MODULE_0__["SET_EMPLOYEES"], data);
@@ -61662,7 +61712,7 @@ var getters = {
 /*!**********************************************!*\
   !*** ./resources/js/store/mutation-types.js ***!
   \**********************************************/
-/*! exports provided: SET_LAYOUT, LOGOUT, SET_TOKEN, SET_USER, SET_COMPANIES, SET_EMPLOYEES */
+/*! exports provided: SET_LAYOUT, LOGOUT, SET_TOKEN, SET_USER, SET_COMPANIES, SET_ALL_COMPANIES, SET_EMPLOYEES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61672,6 +61722,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_TOKEN", function() { return SET_TOKEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_USER", function() { return SET_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_COMPANIES", function() { return SET_COMPANIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALL_COMPANIES", function() { return SET_ALL_COMPANIES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_EMPLOYEES", function() { return SET_EMPLOYEES; });
 //commons.js
 var SET_LAYOUT = 'SET_LAYOUT'; //auth.js
@@ -61680,7 +61731,8 @@ var LOGOUT = 'LOGOUT';
 var SET_TOKEN = 'SET_TOKEN';
 var SET_USER = 'SET_USER'; //company.js
 
-var SET_COMPANIES = 'SET_COMPANIES'; //employees.js
+var SET_COMPANIES = 'SET_COMPANIES';
+var SET_ALL_COMPANIES = 'SET_ALL_COMPANIES'; //employees.js
 
 var SET_EMPLOYEES = 'SET_EMPLOYEES';
 
