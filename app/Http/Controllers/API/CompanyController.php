@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\UploadedFile;
 
 class CompanyController extends Controller
 {
@@ -27,10 +28,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $this->validateCompany($request);
-        $file = $request->file('logo');
-        $file_name = $file->getClientOriginalName();
-        $path = "companies\logos";
-        $file_path = $file->storeAs($path, $file_name, 'public');
+        $file_path = $this->storeFile($request->file('logo'));
 
         Company::create(
             array_merge($request->except('logo'), ['logo' => $file_path])
@@ -57,9 +55,16 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $this->validateCompany($request);
+        $validateLogo = true;
+        if (!$request->file('logo')) {
+            $validateLogo = false;
+        }
+        $this->validateCompany($request, $validateLogo);
+        $file_path = $this->storeFile($request->file('logo'));
         Company::where('id', $request->id)
-            ->update($request->except('id'));
+            ->update(
+                array_merge($request->except(['logo', 'id']), ['logo' => $file_path ? $file_path : $company->logo])
+            );
     }
 
     /**
@@ -77,15 +82,34 @@ class CompanyController extends Controller
      * Validate company model after create or update
      *
      * @param \Illuminate\Http\Request $request
-     *
+     * @param Boolean $validateLogo
      */
-    protected function validateCompany(Request $request)
+    protected function validateCompany(Request $request, $validateLogo = true)
     {
         $request->validate([
             'name' => 'required|string|max:191',
             'email' => 'nullable|email|max:191',
-            'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
+            'logo' => $validateLogo ? 'required|image|dimensions:min_width=100,min_height=100' : '',
             'website' => 'nullable|url|max:191',
         ]);
+    }
+
+    /**
+     * Store uploaded file and returns file path
+     *
+     * @param UploadedFile|null $file
+     * @return String
+     */
+    protected function storeFile($file)
+    {
+        if (!$file) {
+            return null;
+        }
+
+        $file_name = $file->getClientOriginalName();
+        $path = "companies\logos";
+        $file_path = $file->storeAs($path, $file_name, 'public');
+
+        return $file_path;
     }
 }

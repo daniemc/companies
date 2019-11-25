@@ -103,14 +103,12 @@
                         return objectToFormData(data)
                     }]
                 })
-                console.log(status)
-                if (status === 200 || status === 201) {
+                if (status === 200) {
                     this.$store.dispatch('fetchCompanies')
                 }
             },
             async updateCompany() {
                 const { status } = await this.form.put(`/company/${this.form.id}`)
-                console.log(status)
                 if (status === 200) {
                     this.$store.dispatch('fetchCompanies')
                 }
@@ -120,7 +118,6 @@
                     id,
                     name,
                     email,
-                    logo,
                     website
                 } = this.$props.data
 
@@ -128,8 +125,8 @@
                     id,
                     name,
                     email,
-                    logo,
-                    website
+                    website,
+                    logo: null
                 })
             },
             selectFile(e) {

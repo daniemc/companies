@@ -2225,13 +2225,12 @@ __webpack_require__.r(__webpack_exports__);
             case 2:
               _ref = _context.sent;
               status = _ref.status;
-              console.log(status);
 
-              if (status === 200 || status === 201) {
+              if (status === 200) {
                 this.$store.dispatch('fetchCompanies');
               }
 
-            case 6:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -2251,13 +2250,12 @@ __webpack_require__.r(__webpack_exports__);
             case 2:
               _ref2 = _context2.sent;
               status = _ref2.status;
-              console.log(status);
 
               if (status === 200) {
                 this.$store.dispatch('fetchCompanies');
               }
 
-            case 6:
+            case 5:
             case "end":
               return _context2.stop();
           }
@@ -2269,14 +2267,13 @@ __webpack_require__.r(__webpack_exports__);
           id = _this$$props$data.id,
           name = _this$$props$data.name,
           email = _this$$props$data.email,
-          logo = _this$$props$data.logo,
           website = _this$$props$data.website;
       this.form = new Form({
         id: id,
         name: name,
         email: email,
-        logo: logo,
-        website: website
+        website: website,
+        logo: null
       });
     },
     selectFile: function selectFile(e) {
