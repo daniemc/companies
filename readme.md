@@ -10,7 +10,7 @@ To install and run, you must have installed NPM follow the nexts steps:
 1. Clone this repo https://github.com/daniemc/companies.git
 2. cd companies
 3. Copy .env file: **cp .env.example .env**
-4. Run: **composer install**
+4. Run: **composer update**
 5. Run: **php artisan key:generate**
 6. Run: **php artisan jwt:secret**
 7. Edit **.env** file:
