@@ -2,35 +2,35 @@ export const routes = [
     {
         path: '/login',
         name: 'login',
-        component: require('./../components/auth/Login.vue').default,
+        component: () => import( /* webpackChunkName: "login" */ '../components/auth/Login'),
         layout: 'defaultLayout',
         isPublic: true,
     },
     {
         path: '/home',
         name: 'home',
-        component: require('./../components/Home.vue').default,
+        component: () => import( /* webpackChunkName: "home" */ '../components/Home'),
         layout: 'appLayout',
         isPublic: false,
     },
     {
         path: '/companies',
         name: 'companies',
-        component: require('./../components/companies/companies.vue').default,
+        component: () => import( /* webpackChunkName: "companies" */ '../components/companies/Companies'),
         layout: 'appLayout',
         isPublic: false,
     },
     {
         path: '/employees',
         name: 'employees',
-        component: require('./../components/employees/employees.vue').default,
+        component: () => import( /* webpackChunkName: "employees" */ '../components/employees/Employees'),
         layout: 'appLayout',
         isPublic: false,
     },
     {
         path: '*',
         name: 'not_found',
-        component: require('./../components/commons/404.vue').default,
+        component: () => import( /* webpackChunkName: "404" */ '../components/commons/404'),
         layout: 'defaultLayout',
         isPublic: true
     }
