@@ -2,14 +2,14 @@ export const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import( /* webpackChunkName: "login" */ '~/components/auth/Login.vue'),
+        component: () => import( /* webpackChunkName: "login" */ '~/components/auth/login.vue'),
         layout: 'defaultLayout',
         isPublic: true,
     },
     {
         path: '/home',
         name: 'home',
-        component: () => import( /* webpackChunkName: "home" */ '~/components/Home.vue'),
+        component: () => import( /* webpackChunkName: "home" */ '~/components/home.vue'),
         layout: 'appLayout',
         isPublic: false,
     },
