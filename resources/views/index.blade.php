@@ -35,5 +35,12 @@ $polyfills = [
 ];
 @endphp
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features={{ implode(',', $polyfills) }}"></script>
+
+@if(app()->isLocal())
 <script src="{{ asset('js/app.js') }}"></script>
+@else
+<script src="{{ asset('js/manifest.js') }}"></script>
+<script src="{{ asset('js/vendor.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+@endif
 </html>
