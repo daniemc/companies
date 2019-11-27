@@ -20,7 +20,7 @@ function userIsAuth() {
 }
 
 const router = new Router({
-    base: process.env.NODE_ENV === 'production' ? '/companies' : '/',
+    base: process.env.NODE_ENV === 'production' ? '/companies' : '/companies',
     mode: 'history',
     routes: routes.map(route => ({
         name: route.name,
