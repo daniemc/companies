@@ -15,7 +15,7 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .sourceMaps()
-   .setResourceRoot('../');
+   .disableNotifications();
 
    if (mix.inProduction()) {
     mix.version()
@@ -26,12 +26,8 @@ mix.js('resources/js/app.js', 'public/js')
       'axios',
       'vuex',
       'vue-i18n',
-      'vue-meta',
       'js-cookie',
       'vue-router',
-      'vuetify',
-      'vee-validate',
-      'vuex-router-sync'
     ])
   }
 
