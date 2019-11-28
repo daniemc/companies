@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table class="table table-bordered table-hover table-condensed">
+                                <table class="table table-bordered table-hover table-sm">
                                     <thead>
                                         <tr>
                                             <th class="text-center">{{ $t('companies-view.company-fields.name') }}</th>
@@ -36,15 +36,29 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="(company, c) in companies.data" :key="c" >
-                                            <td class="text-center">{{ company.name }}</td>
-                                            <td class="text-center">{{ company.email }}</td>
-                                            <td class="text-center">{{ company.logo }}</td>
-                                            <td class="text-center">{{ company.website }}</td>
-                                            <td class="text-center">
-                                                <button type="button" @click="editCompany(company.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-companies-form">
+                                            <td class="text-center align-middle">{{ company.name }}</td>
+                                            <td class="text-center align-middle">{{ company.email }}</td>
+                                            <td class="text-center align-middle">
+                                                <img
+                                                    class="company-logo"
+                                                    height="100px"
+                                                    width="100px"
+                                                    :src="`${appUrl}/storage/${company.logo}`"
+                                                    alt="company_logo">
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <a
+                                                    :href="company.website"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer">
+                                                        {{ company.website }}
+                                                    </a>
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <button type="button" @click="editCompany(company.id)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-companies-form">
                                                     <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button type="button" @click="deleteCompany(company.id)" class="btn btn-danger btn-xs">
+                                                <button type="button" @click="deleteCompany(company.id)" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
@@ -84,7 +98,8 @@
                     { name: this.$t('companies-view.name'), active: true, url: '/companies' },
                 ],
                 inEdition: false,
-                companyInEdition: {}
+                companyInEdition: {},
+                appUrl: window.config.appUrl
             }
         },
         created () {
@@ -123,6 +138,8 @@
     }
 </script>
 
-<style lang="scss" scoped>
-
+<style >
+    .company-logo {
+        object-fit: contain;
+    }
 </style>
